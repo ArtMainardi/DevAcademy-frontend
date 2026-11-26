@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E3A8A">
+    <title>Criar conta | DevAcademy</title>
+
+    <link rel="stylesheet" href="../../styles/tokens.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/components.css">
+    <link rel="stylesheet" href="../../styles/auth.css">
+
+    <script type="module" src="../../scripts/modules/auth/register.js"></script>
+</head>
+<body>
+    <main class="auth-page">
+        <section class="auth-card" aria-labelledby="register-title">
+            <header class="auth-header">
+                <h1 class="auth-title" id="register-title">Criar conta</h1>
+                <p class="auth-subtitle">
+                    Crie sua conta para compartilhar e descobrir conhecimento.
+                </p>
+            </header>
+
+            <div
+                class="auth-message"
+                id="register-message"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+            <form class="auth-form" id="register-form">
+                <div class="auth-field">
+                    <label class="form-label" for="register-name">Nome</label>
+                    <input
+                        class="form-control"
+                        id="register-name"
+                        name="name"
+                        type="text"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="auth-field">
+                    <label class="form-label" for="register-email">Email</label>
+                    <input
+                        class="form-control"
+                        id="register-email"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="auth-field">
+                    <label class="form-label" for="register-password">Senha</label>
+                    <input
+                        class="form-control"
+                        id="register-password"
+                        name="password"
+                        type="password"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="auth-field">
+                    <label class="form-label" for="register-password-confirmation">
+                        Confirmar senha
+                    </label>
+                    <input
+                        class="form-control"
+                        id="register-password-confirmation"
+                        name="passwordConfirmation"
+                        type="password"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <button class="btn btn-primary auth-submit" id="register-submit" type="submit">
+                    <span id="register-submit-label">Criar conta</span>
+                    <span class="spinner" id="register-spinner" aria-hidden="true" hidden></span>
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Já tem uma conta?
+                <a href="../auth/login.html">Entrar</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
