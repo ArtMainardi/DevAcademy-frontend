@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E3A8A">
+    <title>Entrar | DevAcademy</title>
+
+    <link rel="stylesheet" href="../../styles/tokens.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/components.css">
+    <link rel="stylesheet" href="../../styles/auth.css">
+
+    <script type="module" src="../../scripts/modules/auth/login.js"></script>
+</head>
+<body>
+    <main class="auth-page">
+        <section class="auth-card" aria-labelledby="login-title">
+            <header class="auth-header">
+                <h1 class="auth-title" id="login-title">Entrar</h1>
+                <p class="auth-subtitle">
+                    Acesse sua conta para continuar compartilhando conhecimento.
+                </p>
+            </header>
+
+            <div
+                class="auth-message"
+                id="login-message"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+            <form class="auth-form" id="login-form">
+                <div class="auth-field">
+                    <label class="form-label" for="login-email">Email</label>
+                    <input
+                        class="form-control"
+                        id="login-email"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="auth-field">
+                    <label class="form-label" for="login-password">Senha</label>
+                    <div class="auth-password-wrapper">
+                        <input
+                            class="form-control"
+                            id="login-password"
+                            name="senha"
+                            type="password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button
+                            class="auth-password-toggle"
+                            id="login-password-toggle"
+                            type="button"
+                            aria-controls="login-password"
+                            aria-label="Mostrar senha"
+                        >
+                            Mostrar
+                        </button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary auth-submit" id="login-submit" type="submit">
+                    <span id="login-submit-label">Entrar</span>
+                    <span class="spinner" id="login-spinner" aria-hidden="true" hidden></span>
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Ainda não tem uma conta?
+                <a href="../register/index.html">Criar conta</a>
+            </p>
+        </section>
+    </main>
+
+    <script type="module">
+        const passwordInput = document.querySelector("#login-password");
+        const passwordToggle = document.querySelector("#login-password-toggle");
+
+        passwordToggle.addEventListener("click", () => {
+            const isPasswordHidden = passwordInput.type === "password";
+
+            passwordInput.type = isPasswordHidden ? "text" : "password";
+            passwordToggle.textContent = isPasswordHidden ? "Ocultar" : "Mostrar";
+            passwordToggle.setAttribute(
+                "aria-label",
+                isPasswordHidden ? "Ocultar senha" : "Mostrar senha"
+            );
+        });
+    </script>
+</body>
+</html>
