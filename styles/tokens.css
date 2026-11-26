@@ -1,0 +1,218 @@
+
+/* =========================================================
+   DESIGN SYSTEM — TOKENS GLOBAIS
+   Plataforma colaborativa de conhecimento
+   ========================================================= */
+
+:root {
+    /* -----------------------------------------------------
+       1. CORES PRINCIPAIS
+       ----------------------------------------------------- */
+
+    --color-primary: #1E3A5F;
+    --color-primary-hover: #172F4D;
+    --color-primary-active: #122640;
+    --color-primary-light: #E8EFF7;
+    --color-primary-contrast: #FFFFFF;
+
+    /* -----------------------------------------------------
+       2. CORES SECUNDÁRIAS E DE DESTAQUE
+       ----------------------------------------------------- */
+
+    --color-secondary: #475569;
+    --color-secondary-hover: #334155;
+    --color-secondary-light: #F1F5F9;
+
+    --color-accent: #38BDF8;
+    --color-accent-hover: #0EA5E9;
+    --color-accent-active: #0284C7;
+    --color-accent-light: #E0F2FE;
+    --color-accent-contrast: #082F49;
+
+    /* -----------------------------------------------------
+       3. CORES SEMÂNTICAS
+       ----------------------------------------------------- */
+
+    /* Sucesso */
+    --color-success: #166534;
+    --color-success-light: #DCFCE7;
+    --color-success-border: #86EFAC;
+    --color-success-contrast: #FFFFFF;
+
+    /* Aviso */
+    --color-warning: #854D0E;
+    --color-warning-light: #FEF3C7;
+    --color-warning-border: #FCD34D;
+    --color-warning-contrast: #FFFFFF;
+
+    /* Erro */
+    --color-error: #B91C1C;
+    --color-error-hover: #991B1B;
+    --color-error-light: #FEE2E2;
+    --color-error-border: #FCA5A5;
+    --color-error-contrast: #FFFFFF;
+
+    /* Informação */
+    --color-info: #1D4ED8;
+    --color-info-light: #DBEAFE;
+    --color-info-border: #93C5FD;
+    --color-info-contrast: #FFFFFF;
+
+    /* -----------------------------------------------------
+       4. FUNDOS E SUPERFÍCIES
+       ----------------------------------------------------- */
+
+    --color-background: #F8FAFC;
+    --color-background-muted: #F1F5F9;
+
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F8FAFC;
+    --color-surface-active: #F1F5F9;
+    --color-surface-muted: #F8FAFC;
+    --color-surface-disabled: #E2E8F0;
+
+    /* -----------------------------------------------------
+       5. BORDAS
+       ----------------------------------------------------- */
+
+    --color-border: #CBD5E1;
+    --color-border-light: #E2E8F0;
+    --color-border-strong: #94A3B8;
+    --color-border-focus: var(--color-accent-hover);
+
+    /* -----------------------------------------------------
+       6. TEXTO
+       ----------------------------------------------------- */
+
+    --color-text: #1E293B;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748B;
+    --color-text-disabled: #94A3B8;
+    --color-text-inverse: #FFFFFF;
+    --color-text-link: #1D4ED8;
+    --color-text-link-hover: #1E40AF;
+
+    /* -----------------------------------------------------
+       7. TIPOGRAFIA
+       ----------------------------------------------------- */
+
+    --font-family-base:
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    --font-family-heading: var(--font-family-base);
+    --font-family-monospace:
+        "Cascadia Code",
+        Consolas,
+        monospace;
+
+    /* Tamanhos de fonte */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.125rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 1.875rem;
+    --font-size-3xl: 2.25rem;
+    --font-size-4xl: 3rem;
+
+    /* Pesos de fonte */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Alturas de linha */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* -----------------------------------------------------
+       8. ESCALA DE ESPAÇAMENTO
+       Base: 4px
+       ----------------------------------------------------- */
+
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-8: 2rem;
+    --spacing-10: 2.5rem;
+    --spacing-12: 3rem;
+    --spacing-16: 4rem;
+    --spacing-20: 5rem;
+    --spacing-24: 6rem;
+
+    /* -----------------------------------------------------
+       9. RAIOS DE BORDA
+       ----------------------------------------------------- */
+
+    --radius-none: 0;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+
+    /* -----------------------------------------------------
+       10. SOMBRAS
+       ----------------------------------------------------- */
+
+    --shadow-xs:
+        0 1px 2px rgba(15, 23, 42, 0.04);
+
+    --shadow-sm:
+        0 1px 3px rgba(15, 23, 42, 0.08),
+        0 1px 2px rgba(15, 23, 42, 0.04);
+
+    --shadow-md:
+        0 4px 6px -1px rgba(15, 23, 42, 0.08),
+        0 2px 4px -2px rgba(15, 23, 42, 0.05);
+
+    --shadow-lg:
+        0 10px 15px -3px rgba(15, 23, 42, 0.08),
+        0 4px 6px -4px rgba(15, 23, 42, 0.04);
+
+    --shadow-focus:
+        0 0 0 3px rgba(14, 165, 233, 0.25);
+
+    /* -----------------------------------------------------
+       11. DIMENSÕES GLOBAIS
+       ----------------------------------------------------- */
+
+    --content-max-width: 1200px;
+
+    --input-height-sm: 2rem;
+    --input-height-md: 2.5rem;
+    --input-height-lg: 3rem;
+
+    --button-height-sm: 2rem;
+    --button-height-md: 2.5rem;
+    --button-height-lg: 3rem;
+
+    /* -----------------------------------------------------
+       12. TRANSIÇÕES
+       ----------------------------------------------------- */
+
+    --transition-fast: 120ms ease;
+    --transition-normal: 180ms ease;
+    --transition-slow: 250ms ease;
+
+    --transition-colors:
+        color var(--transition-normal),
+        background-color var(--transition-normal),
+        border-color var(--transition-normal);
+
+    --transition-shadow:
+        box-shadow var(--transition-normal);
+
+    --transition-transform:
+        transform var(--transition-normal);
+}
