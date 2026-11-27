@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../styles/auth.css">
 
     <script type="module" src="../../scripts/modules/auth/login.js"></script>
+    <script type="module" src="../../scripts/components/auth-background.js"></script>
 </head>
 <body>
     <main class="auth-page">
@@ -46,6 +47,7 @@
 
                 <div class="auth-field">
                     <label class="form-label" for="login-password">Senha</label>
+
                     <div class="auth-password-wrapper">
                         <input
                             class="form-control"
@@ -55,6 +57,7 @@
                             autocomplete="current-password"
                             required
                         >
+
                         <button
                             class="auth-password-toggle"
                             id="login-password-toggle"
@@ -67,9 +70,18 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary auth-submit" id="login-submit" type="submit">
+                <button
+                    class="btn btn-primary auth-submit"
+                    id="login-submit"
+                    type="submit"
+                >
                     <span id="login-submit-label">Entrar</span>
-                    <span class="spinner" id="login-spinner" aria-hidden="true" hidden></span>
+                    <span
+                        class="spinner"
+                        id="login-spinner"
+                        aria-hidden="true"
+                        hidden
+                    ></span>
                 </button>
             </form>
 

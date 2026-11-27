@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../styles/auth.css">
 
     <script type="module" src="../../scripts/modules/auth/register.js"></script>
+    <script type="module" src="../../scripts/components/auth-background.js"></script>
 </head>
 <body>
     <main class="auth-page">
@@ -82,15 +83,24 @@
                     >
                 </div>
 
-                <button class="btn btn-primary auth-submit" id="register-submit" type="submit">
+                <button
+                    class="btn btn-primary auth-submit"
+                    id="register-submit"
+                    type="submit"
+                >
                     <span id="register-submit-label">Criar conta</span>
-                    <span class="spinner" id="register-spinner" aria-hidden="true" hidden></span>
+                    <span
+                        class="spinner"
+                        id="register-spinner"
+                        aria-hidden="true"
+                        hidden
+                    ></span>
                 </button>
             </form>
 
             <p class="auth-switch">
                 Já tem uma conta?
-                <a href="../auth/login.html">Entrar</a>
+                <a href="../login/index.html">Entrar</a>
             </p>
         </section>
     </main>
