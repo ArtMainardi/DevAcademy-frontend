@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E3A8A">
+    <title>Histórico de alterações | DevAcademy</title>
+
+    <link rel="stylesheet" href="../../../styles/tokens.css">
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/components.css">
+    <link rel="stylesheet" href="../../../styles/contents.css">
+
+    <script type="module" src="../../../scripts/modules/contents/history.js"></script>
+</head>
+<body>
+    <main class="contents-page">
+        <div class="contents-container contents-container--narrow">
+
+            <div class="contents-header">
+                <a class="btn btn-secondary" id="history-back" href="../explore/index.html">
+                    Voltar para o conteúdo
+                </a>
+            </div>
+
+            <header class="contents-header">
+                <div class="contents-header__text">
+                    <h1 class="contents-title" id="history-title">Histórico de alterações</h1>
+                    <p class="contents-subtitle">
+                        Veja quando o conteúdo foi alterado, por quem e o que mudou.
+                    </p>
+                </div>
+            </header>
+
+            <section id="history-region" aria-labelledby="history-title" aria-busy="true">
+
+                <!-- Carregamento -->
+                <div id="history-loading">
+                    <p class="contents-sr-only" role="status">Carregando histórico…</p>
+
+                    <ul class="content-history" aria-hidden="true">
+                        <li class="content-history__item content-card--skeleton">
+                            <span class="contents-skeleton contents-skeleton--short"></span>
+                            <span class="contents-skeleton contents-skeleton--line"></span>
+                            <span class="contents-skeleton contents-skeleton--short"></span>
+                        </li>
+                        <li class="content-history__item content-card--skeleton">
+                            <span class="contents-skeleton contents-skeleton--short"></span>
+                            <span class="contents-skeleton contents-skeleton--line"></span>
+                            <span class="contents-skeleton contents-skeleton--short"></span>
+                        </li>
+                        <li class="content-history__item content-card--skeleton">
+                            <span class="contents-skeleton contents-skeleton--short"></span>
+                            <span class="contents-skeleton contents-skeleton--line"></span>
+                            <span class="contents-skeleton contents-skeleton--short"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Erro -->
+                <div class="contents-state contents-state--error" id="history-error" role="alert" hidden>
+                    <h2 class="contents-state__title">Não foi possível carregar o histórico</h2>
+                    <p class="contents-state__text" id="history-error-text">
+                        Verifique sua conexão e tente novamente.
+                    </p>
+                    <button class="btn btn-primary" id="history-retry" type="button">
+                        Tentar novamente
+                    </button>
+                </div>
+
+                <!-- Conteúdo inexistente ou sem acesso ao histórico -->
+                <div class="contents-state contents-state--empty" id="history-not-found" hidden>
+                    <h2 class="contents-state__title">Histórico indisponível</h2>
+                    <p class="contents-state__text">
+                        O conteúdo não existe ou você não tem acesso ao histórico dele.
+                    </p>
+                    <a class="btn btn-primary" href="../explore/index.html">Explorar conteúdos</a>
+                </div>
+
+                <!-- Lista vazia -->
+                <div class="contents-state contents-state--empty" id="history-empty" hidden>
+                    <h2 class="contents-state__title">Nenhuma alteração registrada</h2>
+                    <p class="contents-state__text">
+                        Quando o conteúdo for editado, cada alteração aparecerá aqui.
+                    </p>
+                </div>
+
+                <!-- Histórico (preenchido pelo JavaScript) -->
+                <ol class="content-history" id="history-list" hidden></ol>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modelo de cada alteração -->
+    <template id="history-item-template">
+        <li class="content-history__item">
+            <div class="content-history__header">
+                <time class="content-history__date" data-field="date" datetime=""></time>
+            </div>
+            <p class="content-history__description" data-field="description"></p>
+            <p class="content-history__author">
+                Alterado por <span class="content-author__name" data-field="author"></span>
+            </p>
+        </li>
+    </template>
+</body>
+</html>
