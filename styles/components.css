@@ -1,0 +1,633 @@
+
+/* =========================================================
+   DESIGN SYSTEM — COMPONENTES COMPARTILHADOS
+   Plataforma colaborativa de conhecimento
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. BOTÕES
+   --------------------------------------------------------- */
+
+/* Estilo base: aplicar junto de uma variante. */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    min-height: var(--button-height-md);
+    padding: var(--spacing-2) var(--spacing-4);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        var(--transition-colors),
+        var(--transition-shadow);
+}
+
+.btn:hover:not(:disabled):not([aria-disabled="true"]) {
+    text-decoration: none;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    box-shadow: var(--shadow-focus);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    background-color: var(--color-surface-disabled);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-light);
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 1;
+}
+
+/* Botão principal */
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+.btn-primary:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-primary-active);
+    border-color: var(--color-primary-active);
+}
+
+/* Botão secundário */
+
+.btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+}
+
+.btn-secondary:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-secondary-light);
+}
+
+/* Botão de perigo */
+
+.btn-danger {
+    background-color: var(--color-error);
+    color: var(--color-error-contrast);
+    border-color: var(--color-error);
+}
+
+.btn-danger:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-error-hover);
+    border-color: var(--color-error-hover);
+}
+
+.btn-danger:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-error-hover);
+    border-color: var(--color-error-hover);
+}
+
+/* Botão somente com texto */
+
+.btn-text {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: transparent;
+    padding-inline: var(--spacing-2);
+}
+
+.btn-text:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-hover);
+}
+
+.btn-text:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-secondary-light);
+}
+
+/* Estado de carregamento */
+
+.btn-loading {
+    position: relative;
+    cursor: progress;
+    pointer-events: none;
+}
+
+.btn-loading .spinner {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+.btn-loading .btn-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.btn-loading[aria-busy="true"] {
+    opacity: 0.85;
+}
+
+/* Tamanhos reutilizáveis */
+
+.btn-sm {
+    min-height: var(--button-height-sm);
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-xs);
+}
+
+.btn-lg {
+    min-height: var(--button-height-lg);
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-base);
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* ---------------------------------------------------------
+   2. CAMPOS DE FORMULÁRIO
+   --------------------------------------------------------- */
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    width: 100%;
+    min-width: 0;
+}
+
+.form-field-inline {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.form-label {
+    display: block;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+}
+
+.form-label-required::after {
+    content: " *";
+    color: var(--color-error);
+}
+
+.form-help {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+/* Campos: utilizar com input, textarea ou select. */
+
+.form-control {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: var(--input-height-md);
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    transition:
+        var(--transition-colors),
+        var(--transition-shadow);
+}
+
+textarea.form-control {
+    min-height: 7rem;
+    resize: vertical;
+}
+
+.form-control::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+}
+
+.form-control:hover:not(:disabled):not([aria-invalid="true"]) {
+    border-color: var(--color-border-strong);
+}
+
+.form-control:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-color: var(--color-border-focus);
+    box-shadow: var(--shadow-focus);
+}
+
+.form-control:disabled {
+    background-color: var(--color-surface-disabled);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-light);
+    cursor: not-allowed;
+    opacity: 1;
+    box-shadow: none;
+}
+
+/* Erro de validação */
+
+.form-control[aria-invalid="true"],
+.form-control.is-invalid {
+    border-color: var(--color-error);
+}
+
+.form-control[aria-invalid="true"]:focus-visible,
+.form-control.is-invalid:focus-visible {
+    outline-color: var(--color-error);
+    box-shadow: 0 0 0 3px var(--color-error-light);
+}
+
+.form-error {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-2);
+    margin: 0;
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+}
+
+.form-error::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.125rem;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ---------------------------------------------------------
+   3. CARTÃO PADRÃO
+   --------------------------------------------------------- */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: var(--spacing-6);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+
+.card-title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+}
+
+.card-description {
+    margin: var(--spacing-2) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.card-body {
+    min-width: 0;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-6);
+    padding-top: var(--spacing-4);
+    border-top: 1px solid var(--color-border-light);
+}
+
+/* ---------------------------------------------------------
+   4. INDICADOR DE CARREGAMENTO
+   --------------------------------------------------------- */
+
+.spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid var(--color-border-light);
+    border-top-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    animation: component-spinner-rotation 700ms linear infinite;
+    flex-shrink: 0;
+}
+
+.spinner-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 2px;
+}
+
+.spinner-lg {
+    width: 3rem;
+    height: 3rem;
+    border-width: 4px;
+}
+
+.spinner-accent {
+    border-top-color: var(--color-accent-hover);
+}
+
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-6);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    text-align: center;
+}
+
+.loading-indicator .spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+@keyframes component-spinner-rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner {
+        animation-duration: 2s;
+    }
+}
+
+/* ---------------------------------------------------------
+   5. MENSAGEM DE ESTADO VAZIO
+   --------------------------------------------------------- */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    min-width: 0;
+    padding: var(--spacing-8) var(--spacing-6);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.empty-state-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+}
+
+.empty-state-title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+.empty-state-description {
+    max-width: 32rem;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.empty-state-action {
+    margin-top: var(--spacing-2);
+}
+
+/* ---------------------------------------------------------
+   6. MENSAGENS DE FEEDBACK
+   --------------------------------------------------------- */
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    width: 100%;
+    padding: var(--spacing-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.alert-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+.alert-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.alert-title {
+    display: block;
+    margin: 0 0 var(--spacing-1);
+    font-weight: var(--font-weight-semibold);
+}
+
+.alert-description {
+    margin: 0;
+    color: inherit;
+}
+
+.alert-success {
+    border-color: var(--color-success-border);
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.alert-warning {
+    border-color: var(--color-warning-border);
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+}
+
+.alert-error {
+    border-color: var(--color-error-border);
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+}
+
+/* ---------------------------------------------------------
+   7. BADGES E ETIQUETAS
+   --------------------------------------------------------- */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-1);
+    max-width: 100%;
+    padding: var(--spacing-1) var(--spacing-2);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-full);
+    background-color: var(--color-secondary-light);
+    color: var(--color-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+    overflow-wrap: anywhere;
+}
+
+.badge-primary {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.badge-success {
+    border-color: var(--color-success-border);
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.badge-warning {
+    border-color: var(--color-warning-border);
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+}
+
+.badge-error {
+    border-color: var(--color-error-border);
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+}
+
+/* ---------------------------------------------------------
+   8. SEPARADOR VISUAL
+   --------------------------------------------------------- */
+
+.divider {
+    width: 100%;
+    height: 1px;
+    margin: var(--spacing-4) 0;
+    border: 0;
+    background-color: var(--color-border-light);
+}
+
+.divider-vertical {
+    display: inline-block;
+    width: 1px;
+    height: 1.5rem;
+    margin: 0 var(--spacing-3);
+    background-color: var(--color-border-light);
+    vertical-align: middle;
+}
+
+/* ---------------------------------------------------------
+   9. RESPONSIVIDADE
+   --------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .card {
+        padding: var(--spacing-4);
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: var(--spacing-2);
+    }
+
+    .card-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .card-footer .btn {
+        width: 100%;
+    }
+
+    .empty-state {
+        padding: var(--spacing-6) var(--spacing-4);
+    }
+
+    .btn-lg {
+        min-height: var(--button-height-md);
+        padding: var(--spacing-2) var(--spacing-4);
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        white-space: normal;
+    }
+
+    .alert {
+        padding: var(--spacing-3);
+    }
+}
+
+[hidden] {
+    display: none !important;
+}
