@@ -23,6 +23,7 @@
     --ct-primary: var(--color-primary, #1e3a8a);
     --ct-primary-hover: var(--color-primary-hover, #2563eb);
     --ct-danger: var(--color-danger, #b91c1c);
+    --ct-success: var(--color-success, #047857);
 
     --ct-tag-bg: color-mix(in srgb, var(--ct-primary) 8%, var(--ct-surface));
     --ct-tag-bg-hover: color-mix(in srgb, var(--ct-primary) 15%, var(--ct-surface));
@@ -607,6 +608,12 @@ button.hashtag--active:hover {
 
 .content-form__notice[hidden] {
     display: none !important;
+}
+
+.content-form__notice--success {
+    border-color: color-mix(in srgb, var(--ct-success) 30%, var(--ct-surface));
+    background: color-mix(in srgb, var(--ct-success) 8%, var(--ct-surface));
+    color: var(--ct-success);
 }
 
 .content-form__footer {
