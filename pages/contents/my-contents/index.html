@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E3A8A">
+    <title>Meus conteúdos | DevAcademy</title>
+
+    <link rel="stylesheet" href="../../../styles/tokens.css">
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/components.css">
+    <link rel="stylesheet" href="../../../styles/contents.css">
+
+    <script type="module" src="../../../scripts/modules/contents/my-contents.js"></script>
+</head>
+<body>
+    <main class="contents-page">
+        <div class="contents-container">
+
+            <header class="contents-header">
+                <div class="contents-header__text">
+                    <h1 class="contents-title" id="my-title">Meus conteúdos</h1>
+                    <p class="contents-subtitle">
+                        Gerencie o que você escreveu: publicados e rascunhos.
+                    </p>
+                </div>
+
+                <a class="btn btn-primary" id="my-create" href="../create/index.html">
+                    Criar conteúdo
+                </a>
+            </header>
+
+            <section id="my-region" aria-labelledby="my-title" aria-busy="true">
+                <p class="contents-summary" id="my-summary" role="status" hidden></p>
+
+                <!-- Carregamento -->
+                <div id="my-loading">
+                    <p class="contents-sr-only" role="status">Carregando seus conteúdos…</p>
+
+                    <ul class="contents-list" aria-hidden="true">
+                        <li>
+                            <div class="content-card content-card--skeleton">
+                                <span class="contents-skeleton contents-skeleton--tag"></span>
+                                <span class="contents-skeleton contents-skeleton--title"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--short"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-card content-card--skeleton">
+                                <span class="contents-skeleton contents-skeleton--tag"></span>
+                                <span class="contents-skeleton contents-skeleton--title"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--short"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-card content-card--skeleton">
+                                <span class="contents-skeleton contents-skeleton--tag"></span>
+                                <span class="contents-skeleton contents-skeleton--title"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--short"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Erro -->
+                <div class="contents-state contents-state--error" id="my-error" role="alert" hidden>
+                    <h2 class="contents-state__title">Não foi possível carregar seus conteúdos</h2>
+                    <p class="contents-state__text" id="my-error-text">
+                        Verifique sua conexão e tente novamente.
+                    </p>
+                    <button class="btn btn-primary" id="my-retry" type="button">
+                        Tentar novamente
+                    </button>
+                </div>
+
+                <!-- Lista vazia -->
+                <div class="contents-state contents-state--empty" id="my-empty" hidden>
+                    <h2 class="contents-state__title">Você ainda não criou conteúdos</h2>
+                    <p class="contents-state__text">
+                        Escreva seu primeiro conteúdo. Você pode salvá-lo como rascunho e publicar depois.
+                    </p>
+                    <a class="btn btn-primary" href="../create/index.html">Criar conteúdo</a>
+                </div>
+
+                <!-- Lista (preenchida pelo JavaScript) -->
+                <ul class="contents-list" id="my-list" hidden></ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modelo do cartão: mesmo padrão da exploração, com situação e ações -->
+    <template id="my-card-template">
+        <li>
+            <article class="content-card content-card--row">
+                <div class="content-card__main">
+                    <p>
+                        <span class="content-status" data-field="status"></span>
+                    </p>
+
+                    <h2 class="content-card__title">
+                        <a class="content-card__link" data-field="link" href="#"></a>
+                    </h2>
+
+                    <p class="content-card__summary" data-field="summary"></p>
+
+                    <ul class="hashtag-list content-card__tags" data-field="tags"></ul>
+
+                    <ul class="content-meta">
+                        <li class="content-meta__item">
+                            <time data-field="date" datetime=""></time>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-card__actions">
+                    <a class="btn btn-primary" data-field="edit" href="#">Editar</a>
+                    <a class="btn btn-secondary" data-field="history" href="#">Ver histórico</a>
+                </div>
+            </article>
+        </li>
+    </template>
+
+    <!-- Modelo de cada hashtag do cartão -->
+    <template id="my-tag-template">
+        <li><span class="hashtag" data-field="tag"></span></li>
+    </template>
+</body>
+</html>
