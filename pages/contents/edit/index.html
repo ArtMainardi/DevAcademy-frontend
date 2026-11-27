@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E3A8A">
+    <title>Editar conteúdo | DevAcademy</title>
+
+    <link rel="stylesheet" href="../../../styles/tokens.css">
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/components.css">
+    <link rel="stylesheet" href="../../../styles/contents.css">
+
+    <script type="module" src="../../../scripts/modules/contents/edit.js"></script>
+</head>
+<body>
+    <main class="contents-page">
+        <div class="contents-container contents-container--narrow">
+
+            <header class="contents-header">
+                <div class="contents-header__text">
+                    <h1 class="contents-title" id="edit-title">Editar conteúdo</h1>
+                    <p class="contents-subtitle">
+                        Atualize o texto e descreva o que mudou. Cada alteração fica registrada no histórico.
+                    </p>
+                </div>
+            </header>
+
+            <div id="edit-region" aria-busy="true">
+
+                <!-- Carregamento -->
+                <div id="edit-loading">
+                    <p class="contents-sr-only" role="status">Carregando conteúdo…</p>
+
+                    <div class="content-form content-card--skeleton" aria-hidden="true">
+                        <span class="contents-skeleton contents-skeleton--short"></span>
+                        <span class="contents-skeleton contents-skeleton--title"></span>
+                        <span class="contents-skeleton contents-skeleton--line"></span>
+                        <span class="contents-skeleton contents-skeleton--line"></span>
+                        <span class="contents-skeleton contents-skeleton--line"></span>
+                        <span class="contents-skeleton contents-skeleton--short"></span>
+                    </div>
+                </div>
+
+                <!-- Erro ao carregar -->
+                <div class="contents-state contents-state--error" id="edit-error" role="alert" hidden>
+                    <h2 class="contents-state__title">Não foi possível carregar o conteúdo</h2>
+                    <p class="contents-state__text" id="edit-error-text">
+                        Verifique sua conexão e tente novamente.
+                    </p>
+                    <button class="btn btn-primary" id="edit-retry" type="button">
+                        Tentar novamente
+                    </button>
+                </div>
+
+                <!-- Conteúdo inexistente ou sem acesso -->
+                <div class="contents-state contents-state--empty" id="edit-not-found" hidden>
+                    <h2 class="contents-state__title">Conteúdo não encontrado</h2>
+                    <p class="contents-state__text" id="edit-not-found-text">
+                        O link pode estar incorreto, ou o conteúdo foi removido ou não está disponível para você.
+                    </p>
+                    <a class="btn btn-primary" href="../explore/index.html">Explorar conteúdos</a>
+                </div>
+
+                <!-- Formulário -->
+                <form
+                    class="content-form"
+                    id="edit-form"
+                    aria-labelledby="edit-title"
+                    novalidate
+                    hidden
+                >
+                    <!-- Mensagens do formulário -->
+                    <div
+                        class="content-form__notice"
+                        id="edit-message"
+                        role="alert"
+                        tabindex="-1"
+                        hidden
+                    ></div>
+
+                    <!-- Conflito de versão: outra alteração foi salva antes -->
+                    <div class="content-form__notice" id="edit-conflict" role="alert" hidden>
+                        <p>
+                            <strong>Este conteúdo foi alterado por outra edição.</strong>
+                            Recarregue para ver a versão mais recente antes de salvar.
+                            O que você digitou será substituído.
+                        </p>
+                        <div class="content-actions">
+                            <button class="btn btn-primary" id="edit-reload" type="button">
+                                Recarregar conteúdo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Versão atual (somente leitura: o JavaScript a envia como recebeu) -->
+                    <ul class="content-meta">
+                        <li class="content-meta__item">
+                            Versão atual <strong id="edit-version"></strong>
+                        </li>
+                    </ul>
+
+                    <!-- Título -->
+                    <div class="content-field content-field__title">
+                        <label class="form-label" for="edit-name">Título</label>
+                        <input
+                            class="form-control"
+                            id="edit-name"
+                            name="title"
+                            type="text"
+                            autocomplete="off"
+                            aria-describedby="edit-name-error"
+                            required
+                        >
+                        <p class="content-field__error" id="edit-name-error" hidden></p>
+                    </div>
+
+                    <!-- Corpo -->
+                    <div class="content-field content-field__body">
+                        <label class="form-label" for="edit-body">Conteúdo</label>
+                        <textarea
+                            class="form-control"
+                            id="edit-body"
+                            name="body"
+                            rows="12"
+                            aria-describedby="edit-body-error"
+                            required
+                        ></textarea>
+                        <p class="content-field__error" id="edit-body-error" hidden></p>
+                    </div>
+
+                    <!-- Descrição da alteração -->
+                    <div class="content-field">
+                        <label class="form-label" for="edit-change">Descrição da alteração</label>
+                        <input
+                            class="form-control"
+                            id="edit-change"
+                            name="changeDescription"
+                            type="text"
+                            autocomplete="off"
+                            aria-describedby="edit-change-hint edit-change-error"
+                        >
+                        <p class="content-field__hint" id="edit-change-hint">
+                            Explique em poucas palavras o que mudou. Isso aparece no histórico do conteúdo.
+                        </p>
+                        <p class="content-field__error" id="edit-change-error" hidden></p>
+                    </div>
+
+                    <!-- Ações -->
+                    <div class="content-form__footer">
+                        <a class="btn btn-secondary" id="edit-cancel" href="../explore/index.html">
+                            Cancelar
+                        </a>
+                        <button class="btn btn-primary" id="edit-submit" type="submit">
+                            <span id="edit-submit-label">Salvar alterações</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
