@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E3A8A">
+    <title>Buscar conteúdos | DevAcademy</title>
+
+    <link rel="stylesheet" href="../../../styles/tokens.css">
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/components.css">
+    <link rel="stylesheet" href="../../../styles/contents.css">
+
+    <script type="module" src="../../../scripts/modules/contents/search.js"></script>
+</head>
+<body>
+    <main class="contents-page">
+        <div class="contents-container">
+
+            <header class="contents-header">
+                <div class="contents-header__text">
+                    <h1 class="contents-title" id="search-title">Buscar conteúdos</h1>
+                    <p class="contents-subtitle">
+                        Encontre conteúdos pelo título ou pelo texto.
+                    </p>
+                </div>
+            </header>
+
+            <form
+                class="contents-search"
+                id="search-form"
+                role="search"
+                action=""
+                method="get"
+            >
+                <div class="contents-search__field">
+                    <label class="contents-sr-only" for="search-keyword">Buscar conteúdos</label>
+                    <input
+                        class="form-control"
+                        id="search-keyword"
+                        name="keyword"
+                        type="search"
+                        placeholder="Buscar por título ou texto"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <button class="btn btn-primary" id="search-submit" type="submit">Pesquisar</button>
+            </form>
+
+            <section
+                id="search-region"
+                aria-labelledby="search-title"
+                aria-busy="true"
+            >
+                <p class="contents-summary" id="search-summary" role="status" hidden></p>
+
+                <!-- Antes da primeira busca -->
+                <div class="contents-state contents-state--empty" id="search-idle" hidden>
+                    <h2 class="contents-state__title">Digite algo para buscar</h2>
+                    <p class="contents-state__text">
+                        Os resultados aparecerão aqui.
+                    </p>
+                </div>
+
+                <!-- Carregamento -->
+                <div id="search-loading">
+                    <p class="contents-sr-only" role="status">Buscando conteúdos…</p>
+
+                    <ul class="contents-grid" aria-hidden="true">
+                        <li>
+                            <div class="content-card content-card--skeleton">
+                                <span class="contents-skeleton contents-skeleton--title"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--short"></span>
+                                <span class="contents-skeleton contents-skeleton--tag"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-card content-card--skeleton">
+                                <span class="contents-skeleton contents-skeleton--title"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--short"></span>
+                                <span class="contents-skeleton contents-skeleton--tag"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-card content-card--skeleton">
+                                <span class="contents-skeleton contents-skeleton--title"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--line"></span>
+                                <span class="contents-skeleton contents-skeleton--short"></span>
+                                <span class="contents-skeleton contents-skeleton--tag"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Erro -->
+                <div class="contents-state contents-state--error" id="search-error" role="alert" hidden>
+                    <h2 class="contents-state__title">Não foi possível buscar os conteúdos</h2>
+                    <p class="contents-state__text" id="search-error-text">
+                        Verifique sua conexão e tente novamente.
+                    </p>
+                    <button class="btn btn-primary" id="search-retry" type="button">
+                        Tentar novamente
+                    </button>
+                </div>
+
+                <!-- Nenhum resultado -->
+                <div class="contents-state contents-state--empty" id="search-empty" hidden>
+                    <h2 class="contents-state__title">Nenhum conteúdo encontrado</h2>
+                    <p class="contents-state__text" id="search-empty-text">
+                        Tente outras palavras ou confira a grafia.
+                    </p>
+                    <a class="btn btn-primary" href="../explore/index.html">Explorar conteúdos</a>
+                </div>
+
+                <!-- Resultados (preenchidos pelo JavaScript) -->
+                <ul class="contents-grid" id="search-list" hidden></ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modelo do cartão: mesmo padrão da página de exploração -->
+    <template id="search-card-template">
+        <li>
+            <article class="content-card">
+                <h2 class="content-card__title">
+                    <a class="content-card__link" data-field="link" href="#"></a>
+                </h2>
+
+                <p class="content-card__summary" data-field="summary"></p>
+
+                <ul class="hashtag-list content-card__tags" data-field="tags"></ul>
+
+                <footer class="content-card__footer">
+                    <p class="content-author">
+                        Por <span class="content-author__name" data-field="author"></span>
+                    </p>
+                    <ul class="content-meta">
+                        <li class="content-meta__item">
+                            <time data-field="date" datetime=""></time>
+                        </li>
+                    </ul>
+                </footer>
+            </article>
+        </li>
+    </template>
+
+    <!-- Modelo de cada hashtag do cartão -->
+    <template id="search-tag-template">
+        <li><span class="hashtag" data-field="tag"></span></li>
+    </template>
+</body>
+</html>
