@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurações do Usuário</title>
+    <link rel="stylesheet" href="../../../styles/tokens.css" />
+    <link rel="stylesheet" href="../../../styles/global.css" />
+    <link rel="stylesheet" href="../../../styles/components.css" />
+    <link rel="stylesheet" href="../../../styles/users.css" />
+</head>
+<body class="user-page">
+    <main class="user-container">
+        <nav class="user-nav" aria-label="Navegação da área do usuário">
+            <a class="user-nav-link" href="../profile/index.html">
+                Perfil
+            </a>
+            <a class="user-nav-link" href="../edit-profile/index.html">
+                Editar perfil
+            </a>
+            <a class="user-nav-link" href="../activities/index.html">
+                Atividades
+            </a>
+            <a class="user-nav-link is-active" href="./index.html" aria-current="page">
+                Configurações
+            </a>
+        </nav>
+
+        <div
+            id="settings-message"
+            class="user-message"
+            role="status"
+            aria-live="polite"
+            hidden
+        >
+            <span id="settings-message-text"></span>
+        </div>
+
+        <section
+            id="settings-loading"
+            class="user-card user-state-box"
+            role="status"
+            aria-live="polite"
+        >
+            <span class="user-loading-spinner" aria-hidden="true"></span>
+            <h1 class="user-state-title">Carregando configurações...</h1>
+            <p class="user-state-text">
+                Aguarde enquanto buscamos suas preferências atuais.
+            </p>
+        </section>
+
+        <section
+            id="settings-content"
+            class="user-card"
+            aria-labelledby="settings-title"
+            hidden
+        >
+            <header class="user-section-header">
+                <div>
+                    <h1 id="settings-title" class="user-section-title">
+                        Configurações
+                    </h1>
+                    <p class="user-section-subtitle">
+                        Consulte e atualize sua preferência de notificações.
+                    </p>
+                </div>
+                <a class="user-btn user-btn--secondary" href="../profile/index.html">
+                    Voltar ao perfil
+                </a>
+            </header>
+
+            <form id="settings-form" class="user-form" novalidate>
+                <div class="user-form-grid">
+                    <div class="user-field user-field--full">
+                        <label class="form-label" for="notification-preference">
+                            Preferência de notificações
+                        </label>
+                        <input
+                            id="notification-preference"
+                            name="notificationPreference"
+                            type="text"
+                            class="form-control"
+                            required
+                            maxlength="100"
+                            placeholder="Valor da preferência de notificações"
+                            autocomplete="off"
+                        />
+                        <p class="user-field-hint">
+                            Exibe e permite atualizar o valor atual da preferência de notificações retornado pela API.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="user-form-actions">
+                    <a
+                        class="user-btn user-btn--secondary"
+                        href="../profile/index.html"
+                    >
+                        Voltar ao perfil
+                    </a>
+
+                    <button
+                        id="save-settings-btn"
+                        type="submit"
+                        class="user-btn user-btn--primary"
+                    >
+                        <span
+                            id="save-settings-spinner"
+                            class="spinner"
+                            aria-hidden="true"
+                            hidden
+                        ></span>
+                        <span id="save-settings-label">Salvar configurações</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="../../../scripts/modules/users/settings.js"></script>
+</body>
+</html>
