@@ -1,0 +1,454 @@
+/* ==========================================================================
+   Hashtags — Listagem, busca, sugestões e associação a conteúdos
+   Utiliza exclusivamente tokens e componentes globais do Design System
+   ========================================================================== */
+
+.hashtags-page {
+    min-height: 100vh;
+    background-color: var(--color-bg, #f8fafc);
+}
+
+.hashtags-container {
+    width: 100%;
+    max-width: var(--container-max-width, 960px);
+    margin: 0 auto;
+    padding: var(--space-6, 1.5rem) var(--space-4, 1rem) var(--space-10, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6, 1.5rem);
+}
+
+.hashtags-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4, 1rem);
+}
+
+.hashtags-title {
+    margin: 0;
+}
+
+.hashtags-subtitle {
+    margin: var(--space-1, 0.25rem) 0 0;
+    color: var(--color-text-muted, #475569);
+}
+
+.hashtags-section {
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: var(--space-5, 1.25rem);
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(15, 23, 42, 0.05));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 1rem);
+}
+
+.hashtags-section-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3, 0.75rem);
+}
+
+.hashtags-section-title {
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Campo de busca e lista de sugestões
+   -------------------------------------------------------------------------- */
+
+.hashtag-search {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
+}
+
+.hashtag-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-3, 0.75rem);
+}
+
+.hashtag-search-field {
+    position: relative;
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1, 0.25rem);
+}
+
+.hashtag-search-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+}
+
+.hashtag-suggestions {
+    list-style: none;
+    margin: var(--space-1, 0.25rem) 0 0;
+    padding: var(--space-1, 0.25rem);
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-md, 0.5rem);
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(15, 23, 42, 0.08));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1, 0.25rem);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 20;
+}
+
+.hashtag-suggestions[hidden] {
+    display: none;
+}
+
+.hashtag-suggestion-item {
+    margin: 0;
+}
+
+.hashtag-suggestion-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2, 0.5rem);
+    padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm, 0.375rem);
+    color: var(--color-text, #0f172a);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hashtag-suggestion-btn:hover {
+    background-color: var(--color-surface-muted, #f1f5f9);
+}
+
+.hashtag-suggestion-btn:focus-visible {
+    outline: 2px solid var(--color-primary, #2563eb);
+    outline-offset: 2px;
+    background-color: var(--color-surface-muted, #f1f5f9);
+}
+
+.hashtag-suggestion-normalized {
+    color: var(--color-text-muted, #64748b);
+    font-size: 0.875em;
+}
+
+/* --------------------------------------------------------------------------
+   Lista de hashtags e etiquetas (chips)
+   -------------------------------------------------------------------------- */
+
+.hashtag-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+}
+
+.hashtag-list-item {
+    margin: 0;
+    display: inline-flex;
+}
+
+.hashtag-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+    padding: var(--space-1, 0.25rem) var(--space-3, 0.75rem);
+    background-color: var(--color-surface-muted, #f1f5f9);
+    border: 1px solid var(--color-border, #cbd5e1);
+    border-radius: var(--radius-full, 9999px);
+    color: var(--color-text, #0f172a);
+    line-height: 1.4;
+    text-decoration: none;
+    max-width: 100%;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hashtag-tag--interactive {
+    cursor: pointer;
+}
+
+.hashtag-tag--interactive:hover {
+    background-color: var(--color-border, #e2e8f0);
+    border-color: var(--color-primary, #2563eb);
+}
+
+.hashtag-tag--interactive:focus-visible {
+    outline: 2px solid var(--color-primary, #2563eb);
+    outline-offset: 2px;
+}
+
+.hashtag-tag-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hashtag-tag-meta {
+    color: var(--color-text-muted, #475569);
+    font-size: 0.8125em;
+}
+
+/* --------------------------------------------------------------------------
+   Resultados de busca
+   -------------------------------------------------------------------------- */
+
+.hashtag-results {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 0.75rem);
+}
+
+.hashtag-results-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2, 0.5rem);
+    padding-bottom: var(--space-2, 0.5rem);
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.hashtag-results-count {
+    margin: 0;
+    color: var(--color-text-muted, #475569);
+}
+
+.hashtag-result-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
+}
+
+.hashtag-result-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3, 0.75rem);
+    padding: var(--space-3, 0.75rem);
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-md, 0.5rem);
+}
+
+.hashtag-result-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+}
+
+.hashtag-result-date {
+    color: var(--color-text-muted, #64748b);
+    font-size: 0.875em;
+}
+
+/* --------------------------------------------------------------------------
+   Área de hashtags associadas a um conteúdo e botão de remoção
+   -------------------------------------------------------------------------- */
+
+.content-hashtags {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 1rem);
+    padding: var(--space-4, 1rem);
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-lg, 0.75rem);
+}
+
+.content-hashtags-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2, 0.5rem);
+}
+
+.content-hashtags-title {
+    margin: 0;
+}
+
+.content-hashtags-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-3, 0.75rem);
+}
+
+.content-hashtags-field {
+    position: relative;
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1, 0.25rem);
+}
+
+.content-hashtags-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+}
+
+.hashtag-tag--removable {
+    padding-right: var(--space-2, 0.5rem);
+}
+
+.hashtag-remove-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full, 9999px);
+    color: var(--color-text-muted, #475569);
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.hashtag-remove-btn:hover:not(:disabled) {
+    background-color: var(--color-danger-bg, #fee2e2);
+    border-color: var(--color-danger-border, #fecaca);
+    color: var(--color-danger, #b91c1c);
+}
+
+.hashtag-remove-btn:focus-visible {
+    outline: 2px solid var(--color-primary, #2563eb);
+    outline-offset: 2px;
+}
+
+.hashtag-remove-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   Estados: mensagens, carregamento, erro e lista vazia
+   -------------------------------------------------------------------------- */
+
+.hashtag-message {
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    border-radius: var(--radius-md, 0.5rem);
+    border: 1px solid var(--color-border, #e2e8f0);
+}
+
+.hashtag-message[hidden] {
+    display: none;
+}
+
+.hashtag-state-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-2, 0.5rem);
+    padding: var(--space-8, 2rem) var(--space-4, 1rem);
+    background-color: var(--color-surface, #ffffff);
+    border: 1px dashed var(--color-border, #cbd5e1);
+    border-radius: var(--radius-lg, 0.75rem);
+}
+
+.hashtag-state-box[hidden] {
+    display: none;
+}
+
+.hashtag-state-title {
+    margin: 0;
+}
+
+.hashtag-state-text {
+    margin: 0;
+    color: var(--color-text-muted, #475569);
+    max-width: 48ch;
+}
+
+.hashtag-loading-spinner {
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 3px solid var(--color-border, #cbd5e1);
+    border-top-color: var(--color-primary, #2563eb);
+    border-radius: 50%;
+    animation: hashtag-spin 0.8s linear infinite;
+}
+
+@keyframes hashtag-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Acessibilidade e responsividade
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .hashtag-loading-spinner {
+        animation: none;
+    }
+
+    .hashtag-tag,
+    .hashtag-suggestion-btn,
+    .hashtag-remove-btn {
+        transition: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .hashtags-container {
+        padding: var(--space-4, 1rem) var(--space-3, 0.75rem) var(--space-8, 2rem);
+        gap: var(--space-4, 1rem);
+    }
+
+    .hashtags-section,
+    .content-hashtags {
+        padding: var(--space-4, 1rem);
+    }
+
+    .hashtag-search-form,
+    .content-hashtags-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hashtag-search-actions {
+        width: 100%;
+    }
+
+    .hashtag-search-actions > * {
+        flex: 1 1 auto;
+    }
+
+    .hashtag-result-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

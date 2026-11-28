@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hashtags</title>
+    <link rel="stylesheet" href="../../styles/tokens.css" />
+    <link rel="stylesheet" href="../../styles/global.css" />
+    <link rel="stylesheet" href="../../styles/components.css" />
+    <link rel="stylesheet" href="../../styles/hashtags.css" />
+</head>
+<body class="hashtags-page">
+    <main class="hashtags-container">
+        <header class="hashtags-header">
+            <div>
+                <h1 class="hashtags-title">Hashtags</h1>
+                <p class="hashtags-subtitle">
+                    Explore e busque as hashtags utilizadas na plataforma.
+                </p>
+            </div>
+        </header>
+
+        <section class="hashtags-section" aria-labelledby="hashtag-search-title">
+            <div class="hashtags-section-header">
+                <h2 id="hashtag-search-title" class="hashtags-section-title">
+                    Buscar hashtags
+                </h2>
+            </div>
+
+            <div class="hashtag-search">
+                <form id="hashtag-search-form" class="hashtag-search-form" role="search" novalidate>
+                    <div class="hashtag-search-field">
+                        <label class="form-label" for="hashtag-search-input">
+                            Pesquisar por nome ou prefixo
+                        </label>
+                        <input
+                            id="hashtag-search-input"
+                            name="query"
+                            type="search"
+                            class="form-control"
+                            placeholder="Digite para buscar ou ver sugestões..."
+                            autocomplete="off"
+                            aria-autocomplete="list"
+                            aria-controls="hashtag-suggestions-list"
+                            aria-expanded="false"
+                        />
+
+                        <ul
+                            id="hashtag-suggestions-list"
+                            class="hashtag-suggestions"
+                            role="listbox"
+                            aria-label="Sugestões de hashtags"
+                            hidden
+                        ></ul>
+                    </div>
+
+                    <div class="hashtag-search-actions">
+                        <button
+                            id="hashtag-search-submit"
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Buscar
+                        </button>
+                        <button
+                            id="hashtag-search-clear"
+                            type="button"
+                            class="btn btn-secondary"
+                            hidden
+                        >
+                            Limpar
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div
+                id="hashtag-search-message"
+                class="hashtag-message"
+                role="alert"
+                aria-live="assertive"
+                hidden
+            >
+                <span id="hashtag-search-message-text"></span>
+            </div>
+
+            <div
+                id="hashtag-search-loading"
+                class="hashtag-state-box"
+                role="status"
+                aria-live="polite"
+                hidden
+            >
+                <span class="hashtag-loading-spinner" aria-hidden="true"></span>
+                <h3 class="hashtag-state-title">Buscando hashtags...</h3>
+                <p class="hashtag-state-text">
+                    Aguarde enquanto consultamos os resultados.
+                </p>
+            </div>
+
+            <div
+                id="hashtag-search-empty"
+                class="hashtag-state-box"
+                aria-live="polite"
+                hidden
+            >
+                <h3 class="hashtag-state-title">Nenhuma hashtag encontrada</h3>
+                <p class="hashtag-state-text">
+                    Tente pesquisar por outro termo ou limpe a busca para ver todas as hashtags.
+                </p>
+            </div>
+
+            <div
+                id="hashtag-search-results"
+                class="hashtag-results"
+                aria-live="polite"
+                hidden
+            >
+                <div class="hashtag-results-header">
+                    <h3 class="hashtags-section-title">Resultados da busca</h3>
+                    <p id="hashtag-search-results-count" class="hashtag-results-count"></p>
+                </div>
+                <ul id="hashtag-search-results-list" class="hashtag-result-list"></ul>
+            </div>
+        </section>
+
+        <section class="hashtags-section" aria-labelledby="hashtag-list-title">
+            <div class="hashtags-section-header">
+                <h2 id="hashtag-list-title" class="hashtags-section-title">
+                    Todas as hashtags
+                </h2>
+            </div>
+
+            <div
+                id="hashtag-list-message"
+                class="hashtag-message"
+                role="alert"
+                aria-live="assertive"
+                hidden
+            >
+                <span id="hashtag-list-message-text"></span>
+            </div>
+
+            <div
+                id="hashtag-list-loading"
+                class="hashtag-state-box"
+                role="status"
+                aria-live="polite"
+            >
+                <span class="hashtag-loading-spinner" aria-hidden="true"></span>
+                <h3 class="hashtag-state-title">Carregando hashtags...</h3>
+                <p class="hashtag-state-text">
+                    Aguarde enquanto buscamos as hashtags disponíveis.
+                </p>
+            </div>
+
+            <div
+                id="hashtag-list-empty"
+                class="hashtag-state-box"
+                aria-live="polite"
+                hidden
+            >
+                <h3 class="hashtag-state-title">Nenhuma hashtag cadastrada</h3>
+                <p class="hashtag-state-text">
+                    Ainda não há hashtags registradas na plataforma.
+                </p>
+            </div>
+
+            <div id="hashtag-list-content" hidden>
+                <ul id="hashtag-list" class="hashtag-list" aria-label="Lista de hashtags"></ul>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../../scripts/modules/hashtags/list.js"></script>
+    <script type="module" src="../../scripts/modules/hashtags/search.js"></script>
+</body>
+</html>
